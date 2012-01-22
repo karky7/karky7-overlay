@@ -2,44 +2,71 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/dev-db/mysql-plugins/q4m-0.9.5.ebuild,v 1.1 2012/01/10 06:57:20 sbriesen Exp $
 
-EAPI=4
+EAPI=3
 
-inherit eutils toolchain-funcs
+inherit autotools eutils toolchain-funcs
+
+if [[ ${PV} == "9999" ]] ; then
+	EGIT_REPO_URI=""
+	inherit git-2
+	SRC_URI=""
+	#KEYWORDS=""
+else
+	SRC_URI="http://q4m.kazuhooku.com/dist/${P}.tar.gz"
+	KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
+fi
 
 DESCRIPTION="Q4M a message queue plugin for MySQL"
 HOMEPAGE="http://q4m.github.com/"
-SRC_URI="http://q4m.kazuhooku.com/dist/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="-static"
 
 DEPEND=">=virtual/mysql-5.1"
 RDEPEND="${DEPEND}"
 
 pkg_setup() {
-	MYSQL_PLUGINDIR="$(mysql_config --plugindir)"
-	MYSQL_INCLUDE="$(mysql_config --include)"
-	MYSQL_VERSION="$(mysql_config --version)"
-	elog "======>   Version ${MYSQL_VERSION}"
+    MYSQL_PLUGINDIR="$(mysql_config --plugindir)"
+    MYSQL_INCLUDE="$(mysql_config --include)"
+    MYSQL_VERSION="$(mysql_config --version)"
+}
+
+src_unpack() {
+    MYSQL_BEST_VERSION="$(best_version dev-db/mysql)"
+    MYSQL_BEST_VERSION2="$(echo ${MYSQL_BEST_VERSION} | sed -e "s/dev-db\//dev-db\/mysql\//")"
+    /bin/sh ${FILESDIR}/mysql_src_setup.sh "/usr/portage/${MYSQL_BEST_VERSION2}" || die "MySQL source unpak failure"
+    
+    MYSQL_SRC_DIR="/var/tmp/portage/${MYSQL_BEST_VERSION}/work/mysql"
+    unpack ${A}
+    cd "${S}"
 }
 
 src_prepare() {
-        elog "======>   Prepare!!!!!!!!!!!!!!!!!!!!"
-	ebuild /usr/portage/dev-db/mysql/mysql-$(MYSQL_VERSION).ebuild unpack
+    epatch "${FILESDIR}/q4m-0.9.5-1.patch"
+    eautoreconf -if || die "eautoreconf failure"
 }
 
-src_compile() {
-        elog "======>   Compile!!!!!!!!!!!!!!!!!!!!!"
+src_configure() {
+    econf \
+        --with-mysql=${MYSQL_SRC_DIR}
+}
+
+sec_compile() {
+    emake
 }
 
 src_install() {
-        elog "Install"
-	# exeinto "${MYSQL_PLUGINDIR}"
-	# doexe *.so
+    emake \
+    	  DESTDIR="${D}" \
+	  install || die "Install failed"
+    # doexe *.so
+    #dodoc README || die
+    elog "<============== ${D}"
 }
 
-pkg_postinst() {
-	elog "OK ended"
+src_postinst() {
+    #/bin/sh ${FILESDIR}/mysql_src_uninstall.sh "/usr/portage/${MYSQL_BEST_VERSION2}" || die "MySQL source unpak failure"
+    elog "<==== src_postinst"
 }
