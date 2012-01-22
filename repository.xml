@@ -7,6 +7,6 @@
     <owner>
       <email>cantimerny.g@gmail.com</email>
     </owner>
-    <source type="git">git@github.com:karky7/karky7-overlay.git</source>
+    <source type="git">git://github.com/karky7/karky7-overlay.git</source>
   </repo>
 </repositories>
