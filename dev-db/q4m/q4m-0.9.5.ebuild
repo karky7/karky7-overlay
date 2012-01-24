@@ -53,7 +53,7 @@ src_configure() {
         --with-mysql=${MYSQL_SRC_DIR}
 }
 
-sec_compile() {
+src_compile() {
     emake
 }
 
@@ -61,12 +61,9 @@ src_install() {
     emake \
     	  DESTDIR="${D}" \
 	  install || die "Install failed"
-    # doexe *.so
-    #dodoc README || die
-    elog "<============== ${D}"
 }
 
-src_postinst() {
-    #/bin/sh ${FILESDIR}/mysql_src_uninstall.sh "/usr/portage/${MYSQL_BEST_VERSION2}" || die "MySQL source unpak failure"
-    elog "<==== src_postinst"
+pkg_postinst() {
+    elog "Clean up MySQL source directory"
+    /bin/sh ${FILESDIR}/mysql_src_uninstall.sh "/usr/portage/${MYSQL_BEST_VERSION2}" || die "MySQL source unpak failure"
 }
