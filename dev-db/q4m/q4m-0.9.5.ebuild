@@ -6,23 +6,15 @@ EAPI=3
 
 inherit autotools eutils toolchain-funcs
 
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI=""
-	inherit git-2
-	SRC_URI=""
-	KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
-else
-	SRC_URI="http://q4m.kazuhooku.com/dist/${P}.tar.gz"
-	KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
-fi
-
+SRC_URI="http://q4m.kazuhooku.com/dist/${P}.tar.gz"
+KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
 DESCRIPTION="Q4M a message queue plugin for MySQL"
 HOMEPAGE="http://q4m.github.com/"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="-static"
+IUSE="+mmap debug static"
 
 DEPEND=">=virtual/mysql-5.1"
 RDEPEND="${DEPEND}"
@@ -49,8 +41,20 @@ src_prepare() {
 }
 
 src_configure() {
+    # sample
+    # use berkdb   || use gdbm || disable+=" dbm"
+    if use mmap; then
+        enable_mmap="--enable-mmap"
+    fi
+
+    if use debug; then
+        with_debug="--with-debug"
+    fi
+
     econf \
-        --with-mysql=${MYSQL_SRC_DIR}
+        --with-mysql=${MYSQL_SRC_DIR} \
+        ${enable_mmap} \
+        ${with_debug}
 }
 
 src_compile() {
