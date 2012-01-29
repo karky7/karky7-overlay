@@ -14,7 +14,7 @@ HOMEPAGE="http://q4m.github.com/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+mmap debug static"
+IUSE="+mmap debug"
 
 DEPEND=">=virtual/mysql-5.1"
 RDEPEND="${DEPEND}"
