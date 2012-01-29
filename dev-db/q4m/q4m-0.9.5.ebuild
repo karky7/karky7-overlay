@@ -14,7 +14,7 @@ HOMEPAGE="http://q4m.github.com/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+mmap debug"
+IUSE="+mmap +pwrite debug"
 
 DEPEND=">=virtual/mysql-5.1"
 RDEPEND="${DEPEND}"
@@ -44,7 +44,15 @@ src_configure() {
     # sample
     # use berkdb   || use gdbm || disable+=" dbm"
     if use mmap; then
-        enable_mmap="--enable-mmap"
+        enable_mmap="--enable-mmap=yes"
+    else
+        enable_mmap="--enable-mmap=no"
+    fi
+
+    if use pwrite; then
+        with_delete="--with-delete=pwrite"
+    else
+        with_delete="--with-delete=msync"
     fi
 
     if use debug; then
@@ -52,9 +60,10 @@ src_configure() {
     fi
 
     econf \
-        --with-mysql=${MYSQL_SRC_DIR} \
         ${enable_mmap} \
-        ${with_debug}
+        ${with_debug} \
+	${with_delete} \
+        --with-mysql=${MYSQL_SRC_DIR}
 }
 
 src_compile() {
