@@ -61,6 +61,7 @@ src_configure() {
     fi
 
     econf \
+        --libdir=${MYSQL_PLUGINDIR} \
         ${enable_mmap} \
         ${with_debug} \
 	${with_delete} \
