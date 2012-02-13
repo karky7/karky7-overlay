@@ -16,7 +16,6 @@ HOMEPAGE="http://q4m.github.com/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="+mmap +pwrite debug"
-
 DEPEND=">=virtual/mysql-5.1"
 RDEPEND="${DEPEND}"
 
@@ -66,10 +65,6 @@ src_configure() {
         ${with_debug} \
 	${with_delete} \
         --with-mysql=${MYSQL_SRC_DIR}   
-}
-
-src_compile() {
-    emake
 }
 
 src_install() {
