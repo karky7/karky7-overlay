@@ -1,2 +1,2 @@
 >=dev-db/q4m-0.9.5
-
+>=dev-db/HandlerSocket-Plugin-for-MySQL-9999
