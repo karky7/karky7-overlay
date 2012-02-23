@@ -1,3 +1,4 @@
+
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/dev-db/mysql-plugins/HandlerSocket-Plugin-for-MySQL-9999.ebuild,v 1.1 2012/01/10 06:57:20 sbriesen Exp $
