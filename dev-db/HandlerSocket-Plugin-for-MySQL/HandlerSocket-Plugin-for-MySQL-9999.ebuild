@@ -16,7 +16,7 @@ HOMEPAGE="??????????"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
+IUSE="debug "
 DEPEND=">=virtual/mysql-5.1"
 RDEPEND="${DEPEND}"
 
@@ -42,6 +42,9 @@ src_prepare() {
 }
 
 src_configure() {
+    if use debug; then
+      use_enable debug  
+    fi
     econf \
         --with-mysql-source=${MYSQL_SRC_DIR}   
 }
