@@ -14,7 +14,7 @@ KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
 DESCRIPTION="HandlerSocket plugin for MySQL"
 HOMEPAGE="https://github.com/DeNADev/HandlerSocket-Plugin-for-MySQL"
 
-LICENSE="GPL-2"
+LICENSE="BSD"
 SLOT="0"
 IUSE="debug "
 DEPEND=">=virtual/mysql-5.1"
