@@ -7,12 +7,12 @@ EAPI=3
 
 inherit autotools eutils toolchain-funcs git-2
 
-EGIT_REPO_URI="git://192.168.11.3/HandlerSocket-Plugin-for-MySQL.git"
+EGIT_REPO_URI="git://github.com/ahiguti/HandlerSocket-Plugin-for-MySQL.git"
 SRC_URI=""
 KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
 
 DESCRIPTION="HandlerSocket plugin for MySQL"
-HOMEPAGE="??????????"
+HOMEPAGE="https://github.com/DeNADev/HandlerSocket-Plugin-for-MySQL"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -30,10 +30,9 @@ src_unpack() {
     git-2_src_unpack
     MYSQL_BEST_VERSION="$(best_version dev-db/mysql)"
     MYSQL_BEST_VERSION2="$(echo ${MYSQL_BEST_VERSION} | sed -e "s/dev-db\//dev-db\/mysql\//")"
-    #/bin/sh ${FILESDIR}/mysql_src_setup.sh "/usr/portage/${MYSQL_BEST_VERSION2}" || die "MySQL source unpak failure"
+    /bin/sh ${FILESDIR}/mysql_src_setup.sh "/usr/portage/${MYSQL_BEST_VERSION2}" || die "MySQL source unpak failure"
     
-    #MYSQL_SRC_DIR="/var/tmp/portage/${MYSQL_BEST_VERSION}/work/mysql"
-    MYSQL_SRC_DIR="/root/mysql-src"
+    MYSQL_SRC_DIR="/var/tmp/portage/${MYSQL_BEST_VERSION}/work/mysql"
     cd "${S}"
 }
 
