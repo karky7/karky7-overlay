@@ -20,7 +20,6 @@ IUSE=""
 
 RDEPEND=">=dev-haskell/aeson-0.5[profile?]
 		=dev-haskell/conduit-0.5*[profile?]
-		>=dev-haskell/containers-0.2[profile?]
 		>=dev-haskell/monad-control-0.2[profile?]
 		<dev-haskell/monad-control-0.4[profile?]
 		>=dev-haskell/mysql-0.1.1.3[profile?]
