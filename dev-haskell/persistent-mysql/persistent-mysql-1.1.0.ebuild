@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-haskell/aeson-0.5[profile?]
-		>=dev-haskell/bytestring-0.9[profile?]
+		dev-haskell/bytestring[profile?]
 		=dev-haskell/conduit-0.5*[profile?]
 		>=dev-haskell/containers-0.2[profile?]
 		>=dev-haskell/monad-control-0.2[profile?]
