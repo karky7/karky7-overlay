@@ -9,9 +9,12 @@ EAPI=5
 CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
+MY_PN="JuicyPixels"
+MY_P="${MY_PN}-${PV}"
+
 DESCRIPTION="This library can load and store images in PNG,Bitmap, Jpeg, Radiance and read Gif images."
 HOMEPAGE="https://github.com/Twinside/Juicy.Pixels"
-SRC_URI="http://hackage.haskell.org/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="mirror://hackage/packages/archive/${MY_PN}/${PV}/${MY_P}.tar.gz"
 
 LICENSE="BSD3"
 SLOT="0/${PV}"
@@ -27,7 +30,6 @@ RDEPEND=">=dev-haskell/binary-0.6.4.0[profile?]
 		>=dev-haskell/mlt-1.1[profile?]
 		<dev-haskell/mlt-2.2[profile?]
 		>=dev-haskell/mlt-1.1[profile?]
-		<dev-haskell/mlt-2.2[profile?]
 		=dev-haskell/primitive-0.5*[profile?]
 		>=dev-haskell/transformers-0.2.2[profile?]
 		<dev-haskell/transformers-0.4[profile?]
@@ -37,3 +39,5 @@ RDEPEND=">=dev-haskell/binary-0.6.4.0[profile?]
 		>=dev-lang/ghc-7.6"
 DEPEND="${RDEPEND}
 		>=dev-haskell/cabal-1.6"
+
+S="${WORKDIR}/${MY_P}"
