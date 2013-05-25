@@ -23,13 +23,10 @@ IUSE=""
 
 RDEPEND=">=dev-haskell/binary-0.6.4.0[profile?]
 		<dev-haskell/binary-0.7[profile?]
-		>=dev-haskell/bytestring-0.9[profile?]
-		<dev-haskell/bytestring-0.11[profile?]
 		>=dev-haskell/deepseq-1.1[profile?]
 		<dev-haskell/deepseq-1.4[profile?]
 		>=dev-haskell/mtl-1.1[profile?]
 		<dev-haskell/mtl-2.2[profile?]
-		>=dev-haskell/mlt-1.1[profile?]
 		=dev-haskell/primitive-0.5*[profile?]
 		>=dev-haskell/transformers-0.2.2[profile?]
 		<dev-haskell/transformers-0.4[profile?]
