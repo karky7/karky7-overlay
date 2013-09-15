@@ -5,7 +5,6 @@
 EAPI=4
 
 PHP_EXT_NAME="phpwkhtmltox"
-PHP_EXT_ZENDEXT="yes"
 PHP_EXT_INI="yes"
 USE_PHP="php5-3 php5-4"
 
@@ -14,7 +13,6 @@ inherit php-ext-source-r2 git-2
 DESCRIPTION="PHP bindings for the fabulous libwkhtmltox"
 HOMEPAGE="https://github.com/mreiferson/php-wkhtmltox"
 EGIT_REPO_URI="https://github.com/mreiferson/php-wkhtmltox.git"
-
 
 LICENSE="PHP-3.01"
 SLOT="0"
