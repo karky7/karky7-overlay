@@ -18,7 +18,7 @@ EGIT_REPO_URI="https://github.com/mreiferson/php-wkhtmltox.git"
 
 LICENSE="PHP-3.01"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="media-gfx/wkhtmltopdf"
