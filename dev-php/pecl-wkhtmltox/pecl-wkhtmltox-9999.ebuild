@@ -10,7 +10,7 @@ PHP_EXT_NAME="php-wkhtmltox"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="yes"
 DOCS=""
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/mreiferson/php-wkhtmltox.git"
