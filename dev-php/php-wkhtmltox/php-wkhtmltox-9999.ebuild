@@ -4,7 +4,7 @@
 
 EAPI=4
 
-PHP_EXT_NAME="php-wkhtmltox"
+PHP_EXT_NAME="phpwkhtmltox"
 PHP_EXT_ZENDEXT="yes"
 PHP_EXT_INI="yes"
 USE_PHP="php5-3 php5-4"
@@ -37,7 +37,7 @@ src_install() {
 	for slot in $(php_get_slots); do
 		php_init_slot_env ${slot}
 		insinto "${EXT_DIR}"
-		newins "src/${PHP_EXT_NAME}.so" "${PHP_EXT_NAME}.so"
+		newins "modules/${PHP_EXT_NAME}.so" "${PHP_EXT_NAME}.so"
 	done
 	php-ext-source-r2_createinifiles
 }
