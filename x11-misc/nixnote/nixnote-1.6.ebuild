@@ -18,7 +18,8 @@ IUSE=""
 
 DEPEND=""
 RDEPEND=">=virtual/jdk-1.6
-	media-libs/libpng:1.2"
+	media-libs/libpng:1.2
+	"
 
 RESTRICT="mirror"
 
