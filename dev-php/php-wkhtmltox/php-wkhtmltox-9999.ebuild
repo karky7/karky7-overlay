@@ -12,7 +12,7 @@ inherit php-ext-source-r2 git-2
 
 DESCRIPTION="PHP bindings for the fabulous libwkhtmltox"
 HOMEPAGE="https://github.com/mreiferson/php-wkhtmltox"
-EGIT_REPO_URI="https://github.com/mreiferson/php-wkhtmltox.git"
+EGIT_REPO_URI="https://github.com/karky7/php-wkhtmltox.git"
 
 LICENSE="PHP-3.01"
 SLOT="0"
