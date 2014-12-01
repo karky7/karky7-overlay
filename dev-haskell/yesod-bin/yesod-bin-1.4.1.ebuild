@@ -57,5 +57,5 @@ DEPEND="${RDEPEND}
 	>=dev-haskell/zlib-0.5 <dev-haskell/zlib-0.6
 	>=dev-lang/ghc-7.4.1
 "
-PATCHES=("${FILESDIR}/${PN}-1.4.1-ghc-7.8.2-cabal.patch")
+PATCHES=("${FILESDIR}/${PN}-1.4.1-ghc-7.8.3-cabal.patch")
 
