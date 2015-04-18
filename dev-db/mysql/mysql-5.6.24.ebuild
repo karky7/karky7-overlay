@@ -249,4 +249,12 @@ multilib_src_configure() {
 src_prepare() {
 	cp -rf ${WORKDIR}/${Q4M_PKG} ${WORKDIR}/mysql/storage/q4m
 	einfo "copying q4m to mysql strage directory."
+	epatch "${WORKDIR}/mysql/storage/q4m/support-files/5.6-select-where-queue-wait.patch" || die "error q4m patch failed"
+	einfo "complete q4m patch."
+
+}
+
+pkg_postinst() {
+	cp -rf ${WORKDIR}/mysql/storage/q4m/support-files ${ROOT}/usr/share/mysql/
+	einfo "copy q4m support files."
 }
