@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This is a machine vision package that wraps some functionality
+		of OpenCV library. This package has been developed for personal use and
+		is not meant to be a complete wrapper. It also includes some things not
+		in OpenCV.
+		
+		Currently this package is quite dirty and requires much work on documentation
+		and code clean-up, but is somewhat tested.
+		
+		(The scarce) Documentation is available at
+		&lt;http://aleator.github.com/CV/&gt;
+		
+		Changelog.
+		0.3.6.0 - Critical referential transparency bug fix.
+		
+		0.3.5.4 - Bug fixes and preliminary compatability with opencv 2.4
+		
+		0.3.5 - Many new wrappers, clean ups and other fixes.
+		
+		0.3.4 - Pixelwise operations, bug fixes and additional documentation
+		
+		0.3.3.0 - Improvements, including compatablity with opencv 2.3.1 and removal of
+		dependency with deprecated JYU.Utils
+		
+		Changelog.
+		0.3.2.0 - Improvements, including fancier pixel-wise manipulations
+		
+		Changelog.
+		0.3.0.2 - Workaround for compiling with OS X 10.6 &amp; fixed errors about M_PI
+		
+	</longdescription>
+</pkgmetadata>
