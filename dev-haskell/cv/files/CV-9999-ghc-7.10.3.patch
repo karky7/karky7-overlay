@@ -1,0 +1,13 @@
+diff --git CV/Bindings/Features.hsc CV/Bindings/Features.hsc
+index 5ba9a4f..591e02c 100644
+--- CV/Bindings/Features.hsc
++++ CV/Bindings/Features.hsc
+@@ -30,8 +30,6 @@ import CV.Bindings.Types
+ #field edgeBlurSize, Int
+ #stoptype
+ 
+-#ccall wrapExtractMSER, Ptr <CvArr> -> Ptr <CvArr> -> Ptr (Ptr <CvSeq>) -> Ptr <CvMemStorage> -> Ptr <CvMSERParams> -> IO ()
+-
+ #ccall cvMoments ,  Ptr <CvArr> -> Ptr <CvMoments> -> Int -> IO ()
+ #ccall cvGetSpatialMoment, Ptr <CvMoments> -> CInt -> CInt -> IO CDouble
+ #ccall cvGetNormalizedCentralMoment, Ptr <CvMoments> -> CInt -> CInt -> IO CDouble

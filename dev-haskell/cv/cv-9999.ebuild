@@ -47,3 +47,8 @@ src_configure() {
 		$(cabal_flag opencv23 opencv23) \
 		$(cabal_flag opencv24 opencv24)
 }
+
+src_prepare() {
+	epatch "${FILESDIR}"/${MY_P}-ghc-7.10.3.patch
+	eapply_user
+}
