@@ -1,0 +1,102 @@
+diff -r e0780b596429 System/FileLock/Internal/Flock.hsc
+--- a/System/FileLock/Internal/Flock.hsc	Sat Jun 25 15:09:02 2016 +0900
++++ b/System/FileLock/Internal/Flock.hsc	Sat Jun 25 17:12:37 2016 +0900
+@@ -4,19 +4,56 @@
+ #else
+   (Lock, lock, tryLock, unlock) where
+ 
+-#include <sys/file.h>
++#include <unistd.h>
++#include <fcntl.h>
++#include <errno.h>
+ 
++import Foreign (new)
++import Foreign.Ptr (Ptr)
++import Foreign.C.Error
++import Foreign.C.Types
++import Foreign.Storable (Storable, poke, peek, peekByteOff, pokeByteOff, sizeOf, alignment)
+ import Control.Applicative
+ import qualified Control.Exception as E
+-import Data.Bits
+-import Foreign.C.Error
+-import Foreign.C.Types
+ import System.Posix.Files
+ import System.Posix.IO (openFd, closeFd, defaultFileFlags, OpenMode(..))
+ import System.Posix.Types
+ 
+ type Lock = Fd
+ 
++data CFLock = CFLock {
++  l_type   :: !CInt,
++  l_whence :: !CInt,
++  l_start  :: !COff,
++  l_len    :: !COff,
++  l_pid    :: !CPid
++} deriving(Eq, Ord, Show)
++
++instance Storable CFLock where
++  sizeOf x = sizeOf (l_type x)
++             + sizeOf (l_whence x)
++             + sizeOf (l_start x)
++             + sizeOf (l_len x)
++             + sizeOf (l_pid x)
++  alignment _ = alignment (undefined :: COff)
++  peek ptr = CFLock <$> #{peek struct flock, l_type} ptr
++                   <*> #{peek struct flock, l_whence} ptr
++                   <*> #{peek struct flock, l_start} ptr
++                   <*> #{peek struct flock, l_len} ptr
++                   <*> #{peek struct flock, l_pid} ptr
++  poke ptr (CFLock t w s l p) = do
++      #{poke struct flock, l_type} ptr t'
++      #{poke struct flock, l_whence} ptr w'
++      #{poke struct flock, l_start} ptr s'
++      #{poke struct flock, l_len} ptr l'
++      #{poke struct flock, l_pid} ptr p'
++    where
++      t' = fromIntegral t :: CInt
++      w' = fromIntegral w :: CInt
++      s' = fromIntegral s :: COff
++      l' = fromIntegral l :: COff
++      p' = fromIntegral p :: CPid
++
+ lock :: FilePath -> Bool -> IO Lock
+ lock path exclusive = do
+   fd <- open path
+@@ -41,26 +78,24 @@
+ 
+ flock :: Fd -> Bool -> Bool -> IO Bool
+ flock (Fd fd) exclusive block = do
+-  r <- c_flock fd $ modeOp .|. blockOp
+-  if r == 0
++  flck <- new modeOp
++  r <- c_fcntl fd #{const F_SETLK} flck
++  if r /= -1
+     then return True -- success
+     else do
+       errno <- getErrno
+       case () of
+-        _ | errno == eWOULDBLOCK
+-            -> return False -- already taken
+-          | errno == eINTR
++        _ | (errno == Errno #{const EAGAIN} ||
++             errno == Errno #{const EACCES} ||
++             errno == Errno #{const EINTR})
+             -> flock (Fd fd) exclusive block
+-          | otherwise -> throwErrno "flock"
++          | otherwise -> throwErrno "fcntl"
+   where
+     modeOp = case exclusive of
+-      False -> #{const LOCK_SH}
+-      True -> #{const LOCK_EX}
+-    blockOp = case block of
+-      True -> 0
+-      False -> #{const LOCK_NB}
++      False -> CFLock #{const F_RDLCK} #{const SEEK_SET} 0 0 0
++      True -> CFLock #{const F_WRLCK} #{const SEEK_SET} 0 0 0
+ 
+-foreign import ccall "flock"
+-  c_flock :: CInt -> CInt -> IO CInt
++foreign import ccall "fcntl.h fcntl"
++  c_fcntl :: CInt -> CInt -> (Ptr CFLock) -> IO CInt
+ 
+ #endif /* USE_FLOCK */
