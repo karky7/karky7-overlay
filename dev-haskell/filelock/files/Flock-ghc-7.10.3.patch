@@ -1,5 +1,5 @@
 diff --git a/System/FileLock/Internal/Flock.hsc b/System/FileLock/Internal/Flock.hsc
-index f897a73..3b8cd70 100644
+index f897a73..6cebc47 100644
 --- a/System/FileLock/Internal/Flock.hsc
 +++ b/System/FileLock/Internal/Flock.hsc
 @@ -4,19 +4,59 @@ module System.FileLock.Internal.Flock
@@ -66,7 +66,12 @@ index f897a73..3b8cd70 100644
  lock :: FilePath -> Bool -> IO Lock
  lock path exclusive = do
    fd <- open path
-@@ -41,26 +81,24 @@ open path = openFd path WriteOnly (Just stdFileMode) defaultFileFlags
+@@ -37,30 +77,28 @@ unlock :: Lock -> IO ()
+ unlock fd = closeFd fd
+ 
+ open :: FilePath -> IO Fd
+-open path = openFd path WriteOnly (Just stdFileMode) defaultFileFlags
++open path = openFd path ReadWrite (Just stdFileMode) defaultFileFlags
  
  flock :: Fd -> Bool -> Bool -> IO Bool
  flock (Fd fd) exclusive block = do
@@ -87,7 +92,7 @@ index f897a73..3b8cd70 100644
 +             errno == Errno #{const EINTR})
              -> flock (Fd fd) exclusive block
 -          | otherwise -> throwErrno "flock"
-+          | otherwise -> throwErrno $ "fcntl(" ++ show(errno) ++ ")" ++ " " ++ show fd
++          | otherwise -> throwErrno $ "fcntl(" ++ show(errno) ++ ")"
    where
      modeOp = case exclusive of
 -      False -> #{const LOCK_SH}
@@ -95,7 +100,7 @@ index f897a73..3b8cd70 100644
 -    blockOp = case block of
 -      True -> 0
 -      False -> #{const LOCK_NB}
-+      False -> CFLock #{const F_WRLCK} #{const SEEK_SET} 0 0 0
++      False -> CFLock #{const F_RDLCK} #{const SEEK_SET} 0 0 0
 +      True -> CFLock #{const F_WRLCK} #{const SEEK_SET} 0 0 0
  
 -foreign import ccall "flock"
