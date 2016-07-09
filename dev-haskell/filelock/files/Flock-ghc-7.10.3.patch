@@ -1,11 +1,11 @@
-commit c39d5e78d63d01e6d0e773dee81140a89c9a3713
+commit c04d8ed1e15c531bff584f0d3ee9db9f60ebb921
 Author: karky7 <cantimerny.g@gmail.com>
 Date:   Wed Jul 6 07:27:00 2016 +0900
 
     Support for Solaris 11.3
 
 diff --git a/System/FileLock/Internal/Flock.hsc b/System/FileLock/Internal/Flock.hsc
-index f897a73..a415cb0 100644
+index f897a73..6564315 100644
 --- a/System/FileLock/Internal/Flock.hsc
 +++ b/System/FileLock/Internal/Flock.hsc
 @@ -4,19 +4,59 @@ module System.FileLock.Internal.Flock
@@ -72,7 +72,12 @@ index f897a73..a415cb0 100644
  lock :: FilePath -> Bool -> IO Lock
  lock path exclusive = do
    fd <- open path
-@@ -41,26 +81,27 @@ open path = openFd path WriteOnly (Just stdFileMode) defaultFileFlags
+@@ -37,30 +77,31 @@ unlock :: Lock -> IO ()
+ unlock fd = closeFd fd
+ 
+ open :: FilePath -> IO Fd
+-open path = openFd path WriteOnly (Just stdFileMode) defaultFileFlags
++open path = openFd path ReadWrite (Just stdFileMode) defaultFileFlags
  
  flock :: Fd -> Bool -> Bool -> IO Bool
  flock (Fd fd) exclusive block = do
