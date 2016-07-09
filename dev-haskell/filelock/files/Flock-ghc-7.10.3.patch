@@ -1,11 +1,11 @@
-commit c04d8ed1e15c531bff584f0d3ee9db9f60ebb921
+commit f076531284dbb9726595f30b6176e3d0e73a2182
 Author: karky7 <cantimerny.g@gmail.com>
 Date:   Wed Jul 6 07:27:00 2016 +0900
 
     Support for Solaris 11.3
 
 diff --git a/System/FileLock/Internal/Flock.hsc b/System/FileLock/Internal/Flock.hsc
-index f897a73..6564315 100644
+index f897a73..09408ce 100644
 --- a/System/FileLock/Internal/Flock.hsc
 +++ b/System/FileLock/Internal/Flock.hsc
 @@ -4,19 +4,59 @@ module System.FileLock.Internal.Flock
@@ -72,7 +72,7 @@ index f897a73..6564315 100644
  lock :: FilePath -> Bool -> IO Lock
  lock path exclusive = do
    fd <- open path
-@@ -37,30 +77,31 @@ unlock :: Lock -> IO ()
+@@ -37,30 +77,32 @@ unlock :: Lock -> IO ()
  unlock fd = closeFd fd
  
  open :: FilePath -> IO Fd
@@ -91,11 +91,11 @@ index f897a73..6564315 100644
        errno <- getErrno
        case () of
 -        _ | errno == eWOULDBLOCK
--            -> return False -- already taken
--          | errno == eINTR
 +        _ | (errno == Errno #{const EAGAIN} ||
-+             errno == Errno #{const EACCES} ||
-+             errno == Errno #{const EINTR})
++             errno == Errno #{const EACCES})
+             -> return False -- already taken
+-          | errno == eINTR
++          |  errno == Errno #{const EINTR}
              -> flock (Fd fd) exclusive block
 -          | otherwise -> throwErrno "flock"
 +          | otherwise -> throwErrno $ "fcntl(" ++ show(errno) ++ ")"
