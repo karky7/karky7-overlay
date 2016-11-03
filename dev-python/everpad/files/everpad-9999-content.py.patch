@@ -1,0 +1,13 @@
+diff --git a/everpad/pad/editor/content.py b/everpad/pad/editor/content.py
+index fa368de..bfb1acb 100644
+--- a/everpad/pad/editor/content.py
++++ b/everpad/pad/editor/content.py
+@@ -145,7 +145,7 @@ class ContentEdit(QObject):
+         os.path.dirname(__file__), 'editor.html',
+     )
+     if not os.path.exists(_editor_path):
+-        _editor_path = resource_filename('share/everpad/editor.html')
++        _editor_path = resource_filename('everpad/editor.html')
+ 
+     _html = open(_editor_path).read()
+ 
