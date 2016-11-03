@@ -20,10 +20,6 @@ RDEPEND="${DEPEND}"
 
 RESTRICT="strip"
 
-src_prepare() {
-		epatch "${FILESDIR}/${P}-java-1.7.patch"
-}
-
 src_configure() {
 		:
 }
