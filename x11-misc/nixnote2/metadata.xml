@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>cantimerny.g@gmail.com</email>
+		<name>Nixnote2</name>
+	</maintainer>
+	<use>
+		<flag name="opencv3">Support for opencv3</flag>
+	</use>
+	<longdescription>Nixnote2</longdescription>
+</pkgmetadata>
