@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/dev-php/php-wkhtmltox/php-wkhtmltox-9999.ebuild,v 1.3 2013/09/16 11:19:38 olemarkus Exp $
 
-EAPI=4
+EAPI=5
 
 PHP_EXT_NAME="phpwkhtmltox"
 PHP_EXT_INI="yes"
-USE_PHP="php5-3 php5-4"
+USE_PHP="php5-6 php7-0 php7-1"
 
-inherit php-ext-source-r2 git-2
+inherit php-ext-source-r2 git-r3
 
 DESCRIPTION="PHP bindings for the fabulous libwkhtmltox"
 HOMEPAGE="https://github.com/mreiferson/php-wkhtmltox"
