@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>cantimerny.g@gmail.com</email>
+		<name>karky7 overlay</name>
+	</maintainer>
+	<longdescription>
+		cx_Oracle is a Python extension module that enables access to Oracle Database and conforms to the Python database API specification.
+	</longdescription>
+</pkgmetadata>
