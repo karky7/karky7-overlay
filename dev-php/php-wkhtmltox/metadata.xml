@@ -6,6 +6,6 @@
 		<name>karky7 overlay</name>
 	</maintainer>
 	<longdescription>
-	  Converter between Full-width Japanese and Half-width Japanese
+	  PHP bindings for libwkhtmltox
 	</longdescription>
 </pkgmetadata>
