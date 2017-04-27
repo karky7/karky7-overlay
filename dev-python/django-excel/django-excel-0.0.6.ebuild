@@ -24,5 +24,8 @@ dev-python/pyexcel-webio
 dev-python/pyexcel-xls
 dev-python/pyexcel-xlsx
 dev-python/pyexcel-xlsxw
+dev-python/pyexcel-ods3
+dev-python/pyexcel-ods
+dev-python/pyexcel-text
 "
 RDEPEND="${DEPEND}"
