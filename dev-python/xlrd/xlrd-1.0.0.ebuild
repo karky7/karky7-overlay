@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python{2_7,3_{3,4,5,6}} )
 
 inherit eutils multilib distutils-r1
 
-DESCRIPTION="A wrapper library that provides one API to read and write data"
-HOMEPAGE="https://pypi.python.org/pypi/pyexcel/"
+DESCRIPTION="Lib for developers to extract data from Microsoft Excel spreadsheet files"
+HOMEPAGE="https://pypi.python.org/pypi/xlrd/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -16,6 +16,5 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc =x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE=""
 
-DEPEND="dev-python/pyexcel-io
-dev-python/xlrd"
+DEPEND=""
 RDEPEND="${DEPEND}"
