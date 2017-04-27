@@ -3,12 +3,12 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_{3,4,5,6}} )
+PYTHON_COMPAT=( python{2_7,3_{3,4,5}} )
 
 inherit eutils multilib distutils-r1
 
-DESCRIPTION="A wrapper library that provides one API to read and write data"
-HOMEPAGE="https://pypi.python.org/pypi/pyexcel/"
+DESCRIPTION="Lib to create sheet files compati MS Excel 97/2k/XP/2k3 XLS files"
+HOMEPAGE="https://pypi.python.org/pypi/xlwt/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -16,14 +16,5 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc =x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE=""
 
-DEPEND="dev-python/pyexcel-io
-dev-python/xlrd
-dev-python/pyexcel-xls
-dev-python/pyexcel-xlsx
-dev-python/pyexcel-xlsxw
-dev-python/pyexcel-ods3
-dev-python/pyexcel-ods
-dev-python/pyexcel-odsr
-dev-python/pyexcel-text
-dev-python/pyexcel-chart"
+DEPEND=""
 RDEPEND="${DEPEND}"

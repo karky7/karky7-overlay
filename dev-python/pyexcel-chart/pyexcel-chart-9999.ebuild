@@ -3,19 +3,19 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_{3,4,5}} )
+PYTHON_COMPAT=( python{2_7,3_{3,4,5,6}} )
 
-inherit eutils multilib distutils-r1
+inherit eutils multilib distutils-r1 git-2
 
-DESCRIPTION="A wrapper library to read, manipulate and write data in ods format"
-HOMEPAGE="https://pypi.python.org/pypi/pyexcel-ods/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+DESCRIPTION="pyexcel chart"
+HOMEPAGE="https://github.com/pyexcel/pyexcel-chart"
+# SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+EGIT_REPO_URI="http://github.com/pyexcel/pyexcel-chart.git"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc =x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE=""
 
-DEPEND="dev-python/pyexcel-io
-dev-python/odfpy"
+DEPEND="dev-python/pygal"
 RDEPEND="${DEPEND}"
