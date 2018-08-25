@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>cantimerny.g@gmail.com</email>
+		<name>karky7 overlay</name>
+	</maintainer>
+	<longdescription>
+		Watch a Sphinx directory and rebuild the documentation when a change is detected.
+		Also includes a livereload enabled web server.
+	</longdescription>
+</pkgmetadata>
