@@ -21,5 +21,5 @@ DEPEND="dev-python/sphinx
 	>=dev-python/pathtools-0.1.2:=
 	>=dev-python/argh-0.24.1:=
 	>=dev-python/watchdog-0.7.1:=
-	=dev-python/port-for-0.3.1:="
+	=dev-python/port-for-0.3.1"
 RDEPEND="${DEPEND}"
