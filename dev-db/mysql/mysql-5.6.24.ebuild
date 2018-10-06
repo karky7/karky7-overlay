@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql/mysql-5.6.24.ebuild,v 1.4 2015/04/17 17:02:39 jer Exp $
 
 EAPI="5"
 
@@ -8,7 +7,7 @@ MY_EXTRAS_VER="20150410-1944Z"
 MY_PV="${PV//_alpha_pre/-m}"
 MY_PV="${MY_PV//_/-}"
 
-inherit toolchain-funcs mysql-multilib
+inherit toolchain-funcs mysql-multilib-r1
 # only to make repoman happy. it is really set in the eclass
 IUSE="$IUSE"
 
