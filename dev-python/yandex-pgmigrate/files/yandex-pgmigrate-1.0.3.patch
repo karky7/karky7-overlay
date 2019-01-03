@@ -1,0 +1,21 @@
+diff --git a/setup.py b/setup.py
+index 5aba6de..ed38ed9 100644
+--- a/setup.py
++++ b/setup.py
+@@ -24,6 +24,7 @@ setup.py for pgmigrate
+ #    SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+ 
+ import sys
++from setuptools import setup, find_packages
+ 
+ try:
+     from setuptools import setup
+@@ -52,7 +53,7 @@ setup(
+     maintainer_email='opensource@yandex-team.ru',
+     zip_safe=False,
+     platforms=["Linux", "BSD", "MacOS"],
+-    packages=['.'],
++    packages=find_packages(),
+     entry_points={
+         'console_scripts': [
+             'pgmigrate = pgmigrate:_main',
