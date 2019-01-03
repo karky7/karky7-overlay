@@ -3,13 +3,13 @@
 # $Id$
 
 EAPI=6
-PYTHON_COMPAT=( python{2_6,2_7,3_1,3_2,3_3,3_4} )
+PYTHON_COMPAT=( python2_{6,7} python3_{2,3,4,5,6} )
 
 inherit eutils multilib distutils-r1
 
 DESCRIPTION="Converter between Full-width Japanese and Half-width Japanese"
 HOMEPAGE="https://github.com/sspiral/zenhan-py"
-SRC_URI="http://pypi.python.org/packages/source/z/zenhan/zenhan-${PV}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
