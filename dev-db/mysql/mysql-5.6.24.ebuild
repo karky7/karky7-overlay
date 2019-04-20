@@ -7,7 +7,9 @@ MY_EXTRAS_VER="20150410-1944Z"
 MY_PV="${PV//_alpha_pre/-m}"
 MY_PV="${MY_PV//_/-}"
 
-inherit toolchain-funcs mysql-multilib-r1
+inherit cmake-utils eutils flag-o-matic linux-info \
+        prefix toolchain-funcs user multilib-minimal
+
 # only to make repoman happy. it is really set in the eclass
 IUSE="$IUSE"
 
