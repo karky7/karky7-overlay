@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: haskell-cabal.eclass
 # @MAINTAINER:
@@ -67,6 +66,14 @@ inherit eutils ghc-package multilib toolchain-funcs
 # Needs working 'diff'.
 : ${CABAL_DEBUG_LOOSENING:=}
 
+# @ECLASS-VARIABLE: CABAL_REPORT_OTHER_BROKEN_PACKAGES
+# @DESCRIPTION:
+# Show other broken packages if 'cabal configure' fails.
+# It should be normally enabled unless you know you are about
+# to try to compile a lot of broken packages. Default value: 'yes'
+# Set to anything else to disable.
+: ${CABAL_REPORT_OTHER_BROKEN_PACKAGES:=yes}
+
 HASKELL_CABAL_EXPF="pkg_setup src_compile src_test src_install pkg_postinst pkg_postrm"
 
 # 'dev-haskell/cabal' passes those options with ./configure-based
@@ -75,7 +82,7 @@ HASKELL_CABAL_EXPF="pkg_setup src_compile src_test src_install pkg_postinst pkg_
 QA_CONFIGURE_OPTIONS+=" --with-compiler --with-hc --with-hc-pkg --with-gcc"
 
 case "${EAPI:-0}" in
-	2|3|4|5|6) HASKELL_CABAL_EXPF+=" src_configure" ;;
+	2|3|4|5|6|7) HASKELL_CABAL_EXPF+=" src_configure" ;;
 	*) ;;
 esac
 
@@ -270,6 +277,8 @@ cabal-die-if-nonempty() {
 }
 
 cabal-show-brokens() {
+	[[ ${CABAL_REPORT_OTHER_BROKEN_PACKAGES} != yes ]] && return 0
+
 	elog "ghc-pkg check: 'checking for other broken packages:'"
 	# pretty-printer
 	$(ghc-getghcpkg) check 2>&1 \
@@ -282,6 +291,8 @@ cabal-show-brokens() {
 }
 
 cabal-show-old() {
+	[[ ${CABAL_REPORT_OTHER_BROKEN_PACKAGES} != yes ]] && return 0
+
 	cabal-die-if-nonempty 'outdated' \
 		$("${EPREFIX}"/usr/sbin/haskell-updater --quiet --upgrade --list-only)
 }
@@ -364,7 +375,7 @@ cabal-configure() {
 	if $(ghc-supports-shared-libraries); then
 		# Experimental support for dynamically linked binaries.
 		# We are enabling it since 7.10.1_rc3
-		if version_is_at_least "7.10.0.20150316" "$(ghc-version)"; then
+		if ver_test "$(ghc-version)" -ge "7.10.0.20150316"; then
 			# we didn't enable it before as it was not stable on all arches
 			cabalconf+=(--enable-shared)
 			# Known to break on ghc-7.8/Cabal-1.18
@@ -427,7 +438,11 @@ cabal-pkg() {
 	if [[ -n ${CABAL_HAS_LIBRARIES} ]]; then
 		# Newer cabal can generate a package conf for us:
 		./setup register --gen-pkg-config="${T}/${P}.conf"
-		ghc-install-pkg "${T}/${P}.conf"
+		if [[ -d "${T}/${P}.conf" ]]; then
+			ghc-install-pkg "${T}/${P}.conf"/*
+		else
+			ghc-install-pkg "${T}/${P}.conf"
+		fi
 	fi
 }
 
@@ -589,7 +604,7 @@ cabal_src_install() {
 	# remove EPREFIX
 	dodir ${ghc_confdir_with_prefix#${EPREFIX}}
 	local hint_db="${D}/$(ghc-confdir)"
-	local hint_file="${hint_db}/${PF}.conf"
+	local hint_file="${hint_db}/gentoo-empty-${CATEGORY}-${PF}.conf"
 	mkdir -p "${hint_db}" || die
 	touch "${hint_file}" || die
 }

@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: darcs.eclass
 # @MAINTAINER:
@@ -22,7 +21,12 @@
 
 # support for tags
 
-inherit eutils # eshopts_{push,pop}
+# eshopts_{push,pop}
+case "${EAPI:-0}" in
+	4|5|6) inherit eutils ;;
+	7)     inherit estack ;;
+	*) ;;
+esac
 
 # Don't download anything other than the darcs repository
 SRC_URI=""
