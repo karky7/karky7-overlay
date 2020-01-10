@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit qmake-utils versionator
 
@@ -11,7 +11,8 @@ if [[ "${PV}" == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/baumgarr/${PN}.git"
 	SLOT="0/9999"
 else
-	MY_PV="$(replace_version_separator 2 '-')"
+	# MY_PV="$(replace_version_separator 2 '-')"
+    MY_PV=${PV}
 	SRC_URI="https://github.com/baumgarr/${PN}/archive/v${MY_PV}.tar.gz -> ${PN}-${MY_PV}.tar.gz"
 	SLOT="0/2"
 	S="${WORKDIR}/${PN}-${MY_PV}"
@@ -36,6 +37,8 @@ DEPEND="dev-libs/boost
 			  dev-qt/qtcore:4
 			  dev-qt/qtgui:4
 			  dev-qt/qtsql:4
+		      opencv3? ( media-libs/opencv:0/3.0[qt4] )
+		      !opencv3? ( media-libs/opencv:0/2.4[qt4] )
 		  )
 		  qt5? (
 			  app-text/poppler[qt5]
@@ -43,13 +46,11 @@ DEPEND="dev-libs/boost
 			  dev-qt/qtcore:5
 			  dev-qt/qtgui:5
 			  dev-qt/qtsql:5
+		      media-libs/opencv[qt5]
 		  )
-
-		  opencv3? ( media-libs/opencv:0/3.1 )
-		  !opencv3? ( media-libs/opencv:0/2.4 )
 		  "
 RDEPEND="${DEPEND}
-		app-text/htmltidy"
+		app-text/tidy-html5"
 
 # After commit 836482e, NixNote2 can not be compiled with qt4 any more
 if [[ "${PV}" == *9999* ]] && use qt4; then
@@ -57,6 +58,7 @@ if [[ "${PV}" == *9999* ]] && use qt4; then
 fi
 
 src_prepare() {
+	eapply_user
 	# fix VideoCapture undefined reference error with opencv-3
 	if use opencv3; then
 		sed -i 's/LIBS += /LIBS +=  -lopencv_videoio/g' NixNote2.pro
