@@ -5,7 +5,7 @@
 
 EAPI=3
 
-inherit autotools eutils toolchain-funcs git-2
+inherit autotools eutils toolchain-funcs git-r3
 
 EGIT_REPO_URI="git://github.com/ahiguti/HandlerSocket-Plugin-for-MySQL.git"
 SRC_URI=""
