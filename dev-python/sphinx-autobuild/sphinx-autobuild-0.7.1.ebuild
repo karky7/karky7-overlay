@@ -3,7 +3,7 @@
 
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_{3,4,5,6}} )
+PYTHON_COMPAT=( python{2_7,3_{5,6}} )
 
 inherit eutils multilib distutils-r1
 
@@ -21,5 +21,6 @@ DEPEND="dev-python/sphinx
 	>=dev-python/pathtools-0.1.2:=
 	>=dev-python/argh-0.24.1:=
 	>=dev-python/watchdog-0.7.1:=
-	=dev-python/port-for-0.3.1"
+	=dev-python/port-for-0.3.1:=
+	>=dev-python/livereload-2.3.0:="
 RDEPEND="${DEPEND}"

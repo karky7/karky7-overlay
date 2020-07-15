@@ -6,7 +6,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit multilib-build eutils python-r1 distutils-r1 git-2
+inherit multilib-build eutils python-r1 distutils-r1 git-r3
 
 DESCRIPTION="Open source software library for numerical computation using data flow graphs."
 HOMEPAGE="http://www.tensorflow.org/"

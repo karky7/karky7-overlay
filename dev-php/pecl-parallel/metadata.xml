@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<use>
+		<flag name="coverage">Enable parallel coverage support</flag>
+		<flag name="dev">Enable parallel developer flags</flag>
+	</use>
+</pkgmetadata>

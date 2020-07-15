@@ -6,7 +6,7 @@ EAPI="5"
 
 PYTHON_COMPAT=(python{2_5,2_6,2_7})
 
-inherit distutils git-2 eutils
+inherit distutils-r1 git-r3 eutils
 
 EGIT_REPO_URI="git://github.com/nvbn/everpad.git"
 EGIT_MASTER="develop"
