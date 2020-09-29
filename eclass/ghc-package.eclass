@@ -13,12 +13,18 @@
 inherit multiprocessing
 
 # Maintain version-testing compatibility with ebuilds not using EAPI 7.
-# The overlay does not contain any ebuilds lower than EAPI 4, so we don't
-# test for that.
 case "${EAPI:-0}" in
 	4|5|6) inherit eapi7-ver ;;
 	*) ;;
 esac
+
+# GHC uses it's own native code generator. Portage's
+# QA check generates false positive because it assumes
+# presence of GCC-specific sections.
+#
+# Workaround false positiove by disabling the check completely.
+# bug #722078, bug #677600
+QA_FLAGS_IGNORED='.*'
 
 # @FUNCTION: ghc-getghc
 # @DESCRIPTION:
@@ -283,9 +289,14 @@ ghc-install-pkg() {
 
 	mkdir -p "${hint_db}" || die
 	for pkg_config_file in "$@"; do
-		local pkg_name="gentoo-${CATEGORY}-${PF}-"$(basename "${pkg_config_file}")
-		cp "${pkg_config_file}" "${hint_db}/${pkg_name}" || die
-		chmod 0644 "${hint_db}/${pkg_name}" || die
+		# 'haskell-updater' relies on '.conf' presence when scans gentoo/.
+		# Passed files can either already have .conf (single-file style DB)
+		# or not have a .conf suffix (directory-stype).
+		# Here we always normalize file names to have single .conf suffix.
+		local base_name=$(basename "${pkg_config_file}")
+		local pkg_name="gentoo-${CATEGORY}-${PF}-${base_name%.conf}"
+		cp "${pkg_config_file}" "${hint_db}/${pkg_name}.conf" || die
+		chmod 0644 "${hint_db}/${pkg_name}.conf" || die
 	done
 }
 
