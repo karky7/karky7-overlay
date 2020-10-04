@@ -2,10 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
-PYTHON_COMPAT=( python2_{6,7} python3_{2,3,4,5,6} )
+EAPI=7
 
-inherit eutils multilib distutils-r1
+DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python2_{6,7} python3_{6,7,8} )
+
+inherit distutils-r1
 
 DESCRIPTION="Converter between Full-width Japanese and Half-width Japanese"
 HOMEPAGE="https://github.com/sspiral/zenhan-py"
@@ -15,6 +17,3 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE=""
-
-DEPEND=""
-RDEPEND="${DEPEND}"
