@@ -23,4 +23,3 @@ RDEPEND="${DEPEND}"
 python_install_all() {
 	distutils-r1_python_install_all
 }
-        
