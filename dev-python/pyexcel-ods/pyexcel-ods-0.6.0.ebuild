@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-PYTHON_COMPAT=( python{2_7,3_{3,4,5,6}} )
+EAPI=7
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit eutils multilib distutils-r1
 
-DESCRIPTION="A wrapper library that provides one API to read and write data"
-HOMEPAGE="https://pypi.python.org/pypi/pyexcel/"
+DESCRIPTION="A wrapper library to read, manipulate and write data in ods format"
+HOMEPAGE="https://pypi.python.org/pypi/pyexcel-ods/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -17,13 +17,5 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc =x86 ~x86-fbsd ~amd6
 IUSE=""
 
 DEPEND="dev-python/pyexcel-io
-dev-python/xlrd
-dev-python/pyexcel-xls
-dev-python/pyexcel-xlsx
-dev-python/pyexcel-xlsxw
-dev-python/pyexcel-ods3
-dev-python/pyexcel-ods
-dev-python/pyexcel-odsr
-dev-python/pyexcel-text
-dev-python/pyexcel-chart"
+dev-python/odfpy"
 RDEPEND="${DEPEND}"

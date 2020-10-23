@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-PYTHON_COMPAT=( python{2_7,3_{3,4,5,6}} )
+EAPI=7
+PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit eutils multilib distutils-r1
+inherit distutils-r1
 
-DESCRIPTION="manipulate and write data in xlsx and xlsm format for python"
-HOMEPAGE="https://pypi.python.org/pypi/pyexcel-xlsx/"
+DESCRIPTION="It reads xlsx and xlsm format for python"
+HOMEPAGE="https://pypi.python.org/pypi/pyexcel-xls/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -17,5 +17,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc =x86 ~x86-fbsd ~amd6
 IUSE=""
 
 DEPEND="dev-python/pyexcel-io
-dev-python/openpyxl"
+dev-python/xlrd
+dev-python/xlwt"
 RDEPEND="${DEPEND}"
