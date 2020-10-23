@@ -17,6 +17,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc =x86 ~x86-fbsd ~amd6
 IUSE=""
 
 DEPEND="dev-python/pyexcel-io
-dev-python/xlrd
+dev-python/xlrd3
 dev-python/xlwt"
 RDEPEND="${DEPEND}"

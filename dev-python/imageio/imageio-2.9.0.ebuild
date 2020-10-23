@@ -2,18 +2,19 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-PYTHON_COMPAT=( python{2_7,3_{2,3,4}} )
+EAPI=7
 
-inherit eutils multilib distutils-r1
+PYTHON_COMPAT=( python3_{6,7,8} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+inherit distutils-r1
 
 DESCRIPTION="Library for reading and writing a wide range of image, video, scientific, and volumetric data formats"
 HOMEPAGE="http://imageio.github.io"
-SRC_URI="mirror://pypi/i/${PN}/${P}.zip"
+SRC_URI="mirror://pypi/i/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc =x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND=""
