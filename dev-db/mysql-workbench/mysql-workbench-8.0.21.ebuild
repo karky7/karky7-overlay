@@ -50,7 +50,7 @@ CDEPEND="${PYTHON_DEPS}
 		virtual/opengl
 		|| ( sys-libs/e2fsprogs-libs dev-libs/ossp-uuid )
 		dev-libs/tinyxml[stl]
-		>=dev-db/mysql-connector-c++-1.1.8 =dev-db/mysql-connector-c++-1*
+		>=dev-db/mysql-connector-c++-1.1.8
 		dev-db/vsqlite++
 		|| ( dev-db/libiodbc dev-db/unixODBC )
 		dev-python/pexpect
