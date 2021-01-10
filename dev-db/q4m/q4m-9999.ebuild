@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/dev-db/mysql-plugins/q4m-9999.ebuild,v 1.1 2012/01/10 06:57:20 sbriesen Exp $
 
-EAPI=3
+EAPI=7
 
-inherit autotools eutils toolchain-funcs git-2
+inherit autotools eutils toolchain-funcs git-3
 
 EGIT_REPO_URI="git://github.com/q4m/q4m.git"
 SRC_URI=""
@@ -26,7 +26,7 @@ pkg_setup() {
 }
 
 src_unpack() {
-    git-2_src_unpack
+    git-3_src_unpack
     MYSQL_BEST_VERSION="$(best_version dev-db/mysql)"
     MYSQL_BEST_VERSION2="$(echo ${MYSQL_BEST_VERSION} | sed -e "s/dev-db\//dev-db\/mysql\//")"
     /bin/sh ${FILESDIR}/mysql_src_setup.sh "/usr/portage/${MYSQL_BEST_VERSION2}" || die "MySQL source unpak failure"
