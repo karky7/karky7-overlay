@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>no-herd</herd>
-	<maintainer><email>cantimerny.g@gmail.com</email></maintainer>
+	<maintainer type="person">
+		<email>calimakvo@gmail.com</email>
+		<name>karky7</name>
+	</maintainer>
+	<use>
+		<flag name="mmap">Use mmap</flag>
+		<flag name="pwrite">Use fwrite api</flag>
+	</use>
+	<longdescription>
+		This package provides MySQL Queue Strage Engine.
+	</longdescription>
 </pkgmetadata>
