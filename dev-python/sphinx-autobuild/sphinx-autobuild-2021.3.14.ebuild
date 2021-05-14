@@ -20,6 +20,7 @@ IUSE=""
 
 DEPEND="dev-python/sphinx[${PYTHON_USEDEP}]
 	dev-python/livereload[${PYTHON_USEDEP}]
+	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/urllib3[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 
