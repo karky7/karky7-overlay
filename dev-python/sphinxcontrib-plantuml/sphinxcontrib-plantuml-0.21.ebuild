@@ -16,7 +16,7 @@ IUSE=""
 
 PDEPEND="dev-python/sphinx[${PYTHON_USEDEP}]"
 RDEPEND="media-gfx/plantuml
-<dev-python/docutils-0.17[${PYTHON_USEDEP}]"
+dev-python/docutils[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? (
 		${PDEPEND}
