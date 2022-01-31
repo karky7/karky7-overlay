@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>calimakvo@gmail.com</email>
+		<name>karky7 overlay</name>
+	</maintainer>
+	<longdescription>
+		Automatic model code generator for SQLAlchemy
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">sqlacodegen</remote-id>
+		<remote-id type="github"></remote-id>
+		<bugs-to></bugs-to>
+	</upstream>
+</pkgmetadata>
