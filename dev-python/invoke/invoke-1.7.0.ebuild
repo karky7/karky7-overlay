@@ -1,9 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
+
 inherit distutils-r1
 
 DESCRIPTION="Pythonic task execution"
@@ -23,10 +24,6 @@ BDEPEND="
 		>=dev-python/pytest-relaxed-1.1.4
 	)"
 RDEPEND=""
-
-PATCHES=(
-	"${FILESDIR}/${PN}-1.1.0-skip-pty-tests.patch"
-)
 
 python_test() {
 	# -s flag is important: tests fail when pytest isn't in "no capture" mode
