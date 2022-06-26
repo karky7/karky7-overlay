@@ -3,9 +3,10 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{8..11} )
 
-inherit eutils distutils-r1
+inherit distutils-r1
 
 DESCRIPTION="simple-db-migrate is a database versioning and migration tool"
 HOMEPAGE="http://guilhermechapiewski.github.io/simple-db-migrate/"
@@ -15,8 +16,6 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 src_prepare() {
 	eapply_user
