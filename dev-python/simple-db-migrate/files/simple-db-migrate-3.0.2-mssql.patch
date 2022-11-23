@@ -1,5 +1,5 @@
 diff --git a/simple_db_migrate/mssql.py b/simple_db_migrate/mssql.py
-index 6a6bd59..63a531d 100644
+index 6a6bd59..48d9cd1 100644
 --- a/simple_db_migrate/mssql.py
 +++ b/simple_db_migrate/mssql.py
 @@ -16,8 +16,8 @@ class MSSQL(object):

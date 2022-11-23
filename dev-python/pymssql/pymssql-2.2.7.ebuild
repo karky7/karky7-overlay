@@ -18,24 +18,14 @@ KEYWORDS="*"
 RESTRICT="mirror"
 IUSE=""
 
-RDEPEND=">=dev-db/freetds-0.95.95[mssql]"
+RDEPEND=">=dev-db/freetds-0.95.95[mssql]
+	virtual/krb5"
+
 DEPEND="${RDEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]"
-
-DOCS="ChangeLog"
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]"
 
 python_compile() {
-	if ! python_is_python3; then
-		local CFLAGS="${CFLAGS}"
-		local CXXFLAGS="${CXXFLAGS}"
-		append-flags -fno-strict-aliasing
-	fi
-
-	# Python gets confused when it is in sys.path before build.
-	local PYTHONPATH=
-	export PYTHONPATH
-
 	distutils-r1_python_compile
 }
 
