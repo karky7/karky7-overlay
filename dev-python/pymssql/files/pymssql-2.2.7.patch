@@ -1,0 +1,13 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 2fd7073..a943920 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,7 +1,7 @@
+ [build-system]
+ requires = [
+     "setuptools>=54.0", 
+-    "setuptools_scm[toml]>=5.0,<7.0", 
++    "setuptools_scm[toml]>=5.0,<8.0",
+     "wheel>=0.36.2", 
+     "Cython>=0.29.22"
+     ]

@@ -22,3 +22,7 @@ src_prepare() {
 	# error for `Package installs 'tests' package which is forbidden and likely a bug in the build system.`
 	rm -r tests/
 }
+
+PATCHES=(
+	"${FILESDIR}/${PN}-3.0.2-mssql.patch"
+)

@@ -1,0 +1,15 @@
+diff --git a/simple_db_migrate/mssql.py b/simple_db_migrate/mssql.py
+index 6a6bd59..63a531d 100644
+--- a/simple_db_migrate/mssql.py
++++ b/simple_db_migrate/mssql.py
+@@ -16,8 +16,8 @@ class MSSQL(object):
+ 
+         self.__mssql_driver = mssql_driver
+         if not mssql_driver:
+-            import _mssql
+-            self.__mssql_driver = _mssql
++            import pymssql._mssql
++            self.__mssql_driver = pymssql._mssql
+ 
+         if config.get("drop_db_first"):
+             self._drop_database()
