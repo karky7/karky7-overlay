@@ -4,7 +4,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{3_8,3_9,3_10} pypy3 )
+PYTHON_COMPAT=( python3_{9..11} pypy3)
 
 inherit distutils-r1 flag-o-matic
 
@@ -23,7 +23,7 @@ RDEPEND=">=dev-db/freetds-0.95.95[mssql]
 
 DEPEND="${RDEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]"
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]"
 
 python_compile() {
 	distutils-r1_python_compile
