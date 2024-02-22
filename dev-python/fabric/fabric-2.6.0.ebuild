@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
-
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..12} )
 inherit distutils-r1
 
 DESCRIPTION="A simple pythonic tool for remote execution and deployment"
@@ -19,7 +19,7 @@ IUSE="doc fab2 test"
 RDEPEND="
 	!fab2? ( !dev-python/fabric:0 )
 	dev-python/cryptography[${PYTHON_USEDEP}]
-	<dev-python/invoke-2[${PYTHON_USEDEP}]
+	<dev-python/invoke[${PYTHON_USEDEP}]
 	>=dev-python/paramiko-2.4[${PYTHON_USEDEP}]"
 
 BDEPEND="

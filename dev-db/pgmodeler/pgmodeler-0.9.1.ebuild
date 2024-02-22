@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-POSTGRES_COMPAT=( 9.{3..6} 10 )
+POSTGRES_COMPAT=( 9.{3..6} 11 12 13 14 )
 
-inherit eutils desktop postgres qmake-utils
+inherit desktop postgres qmake-utils
 
 MY_PV=${PV/_/-}
 
@@ -61,7 +61,7 @@ src_install() {
 }
 
 src_prepare() {
-    eapply_user
-    epatch "${FILESDIR}/pgmodeler-0.9.1.patch"
-    # eautoreconf -if || die "eautoreconf failure"
+	eapply_user
+	epatch "${FILESDIR}/pgmodeler-0.9.1.patch"
+	# eautoreconf -if || die "eautoreconf failure"
 }
