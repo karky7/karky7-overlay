@@ -1,17 +1,17 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..9} )
-
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..12} )
 inherit distutils-r1
 
 DESCRIPTION="A simple pythonic tool for remote execution and deployment"
 HOMEPAGE="https://www.fabfile.org https://pypi.org/project/Fabric/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="BSD"
 SLOT="2"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc fab2 test"
@@ -19,15 +19,13 @@ IUSE="doc fab2 test"
 RDEPEND="
 	!fab2? ( !dev-python/fabric:0 )
 	dev-python/cryptography[${PYTHON_USEDEP}]
-	<dev-python/invoke-2[${PYTHON_USEDEP}]
+	dev-python/invoke[${PYTHON_USEDEP}]
 	>=dev-python/paramiko-2.4[${PYTHON_USEDEP}]"
 
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
 		dev-python/alabaster[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-1.4[${PYTHON_USEDEP}]
-		<dev-python/sphinx-2.5[${PYTHON_USEDEP}]
 	)
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]

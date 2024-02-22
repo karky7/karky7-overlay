@@ -1,12 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>python@gentoo.org</email>
-		<name>Python</name>
+		<email>gasc@eurecom.fr</email>
+		<name>Gasc Henri</name>
 	</maintainer>
-	<longdescription>
-		Invoke is a Python (2.7 and 3.4+) task execution tool and library,
-		drawing inspiration from various sources to arrive at a powerful and clean feature set.
-	</longdescription>
+	<upstream>
+		<remote-id type="pypi">invoke</remote-id>
+		<remote-id type="github">pyinvoke/invoke</remote-id>
+		<doc>https://docs.pyinvoke.org</doc>
+		<bugs-to>https://github.com/pyinvoke/invoke/issues</bugs-to>
+		<changelog>https://www.pyinvoke.org/changelog.html</changelog>
+	</upstream>
 </pkgmetadata>
