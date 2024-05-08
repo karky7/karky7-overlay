@@ -3,10 +3,12 @@
 #                   madsl
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{9..11} pypy3)
+EAPI=8
 
-inherit distutils-r1 flag-o-matic
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
+
+inherit distutils-r1
 
 DESCRIPTION="DB-API interface to Microsoft SQL Server for Python"
 HOMEPAGE="http://pymssql.org/ https://github.com/pymssql/pymssql https://pypi.python.org/pypi/pymssql"
@@ -18,8 +20,9 @@ KEYWORDS="*"
 RESTRICT="mirror"
 IUSE=""
 
-RDEPEND=">=dev-db/freetds-0.95.95[mssql]
-	virtual/krb5"
+RDEPEND=">=dev-db/freetds-1.0.0[mssql]
+	virtual/krb5
+	dev-python/wheel[${PYTHON_USEDEP}]"
 
 DEPEND="${RDEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
@@ -31,17 +34,4 @@ python_compile() {
 
 src_prepare() {
 	distutils-r1_src_prepare
-
-	# Require not setuptools-git.
-	sed -e "/setup_requires=\['setuptools_git'\]/d" -i setup.py
-
-	# Force regeneration of Cython-generated files.
-	rm _mssql.c pymssql.c
-
-	# Delete internal copy of dev-db/freetds.
-	rm -r freetds
 }
-
-PATCHES=(
-	"${FILESDIR}/${PN}-2.2.7.patch"
-)
