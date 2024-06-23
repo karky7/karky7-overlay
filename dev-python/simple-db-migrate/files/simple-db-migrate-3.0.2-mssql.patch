@@ -1,3 +1,16 @@
+diff --git a/simple_db_migrate/core/__init__.py b/simple_db_migrate/core/__init__.py
+index 49c74af..50934fa 100644
+--- a/simple_db_migrate/core/__init__.py
++++ b/simple_db_migrate/core/__init__.py
+@@ -3,7 +3,7 @@ import codecs
+ import os
+ import shutil
+ import re
+-import imp
++import importlib
+ import tempfile
+ import sys
+ from simple_db_migrate.helpers import Utils
 diff --git a/simple_db_migrate/mssql.py b/simple_db_migrate/mssql.py
 index 6a6bd59..48d9cd1 100644
 --- a/simple_db_migrate/mssql.py

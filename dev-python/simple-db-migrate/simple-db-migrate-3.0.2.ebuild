@@ -15,7 +15,15 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="mssql"
+
+DEPEND="
+	mssql? (
+		dev-python/pymssql[${PYTHON_USEDEP}]
+	)
+"
+
+RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0.2-mssql.patch"
