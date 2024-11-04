@@ -20,6 +20,7 @@ RDEPEND="
 	!fab2? ( !dev-python/fabric:0 )
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/invoke[${PYTHON_USEDEP}]
+	dev-python/decorator[${PYTHON_USEDEP}]
 	>=dev-python/paramiko-2.4[${PYTHON_USEDEP}]"
 
 BDEPEND="
