@@ -44,5 +44,6 @@ src_prepare() {
 	cabal_chdeps \
 		'hspec                       >= 2.2      && < 2.8' 'hspec >=2.2' \
 		'bytestring                  >= 0.10     && < 0.11' 'bytestring >= 0.10' \
-		'time                        >= 1.4      && < 1.10' 'time >= 1.4'
+		'time                        >= 1.4      && < 1.10' 'time >= 1.4' \
+		'text                        >= 1.2      && < 1.3' 'text >= 1.2'
 }
