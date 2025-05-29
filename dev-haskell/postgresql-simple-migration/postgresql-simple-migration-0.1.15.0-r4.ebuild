@@ -22,7 +22,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND=">=dev-haskell/base64-bytestring-1.0:=[profile?] <dev-haskell/base64-bytestring-1.3:=[profile?]
 	>=dev-haskell/cryptohash-0.11:=[profile?] <dev-haskell/cryptohash-0.12:=[profile?]
-	>=dev-haskell/postgresql-simple-0.4:=[profile?] <dev-haskell/postgresql-simple-0.7:=[profile?]
+	>=dev-haskell/postgresql-simple-0.4:=[profile?]
 	>=dev-lang/ghc-8.4.3:=
 "
 DEPEND="${RDEPEND}
@@ -45,5 +45,6 @@ src_prepare() {
 		'hspec                       >= 2.2      && < 2.8' 'hspec >=2.2' \
 		'bytestring                  >= 0.10     && < 0.11' 'bytestring >= 0.10' \
 		'time                        >= 1.4      && < 1.10' 'time >= 1.4' \
-		'text                        >= 1.2      && < 1.3' 'text >= 1.2'
+		'text                        >= 1.2      && < 1.3' 'text >= 1.2' \
+		'postgresql-simple           >= 0.4      && < 0.7' 'postgresql-simple >= 0.4'
 }
