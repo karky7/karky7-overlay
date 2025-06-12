@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit java-pkg-2 versionator
+inherit java-pkg-2
 
 DESCRIPTION="JDBC driver for Microsoft SQL Server"
 HOMEPAGE="https://github.com/Microsoft/mssql-jdbc"

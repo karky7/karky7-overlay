@@ -1,11 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+DISTUTILS_USE_PEP517=flit
+PYTHON_COMPAT=( python3_{11..13} )
 
-PYTHON_COMPAT=( python3_{7..9} )
-
-inherit eutils multilib distutils-r1
+inherit multilib distutils-r1
 
 DESCRIPTION="Correctly generate plurals, singular nouns, ordinals, indefinite articles; convert numbers to words"
 HOMEPAGE="https://pypi.python.org/pypi/inflect"

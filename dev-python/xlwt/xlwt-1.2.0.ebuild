@@ -1,11 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+DISTUTILS_USE_PEP517=flit
+PYTHON_COMPAT=( python3_{11..13} )
 
-PYTHON_COMPAT=( python3_{10..12} )
-
-inherit eutils multilib distutils-r1
+inherit multilib distutils-r1
 
 DESCRIPTION="Lib to create sheet files compati MS Excel 97/2k/XP/2k3 XLS files"
 HOMEPAGE="https://pypi.python.org/pypi/xlwt/"

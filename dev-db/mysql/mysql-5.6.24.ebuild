@@ -1,14 +1,14 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_EXTRAS_VER="20150410-1944Z"
 MY_PV="${PV//_alpha_pre/-m}"
 MY_PV="${MY_PV//_/-}"
 
-inherit cmake-utils eutils flag-o-matic linux-info \
-        prefix toolchain-funcs user multilib-minimal
+inherit cmake flag-o-matic linux-info \
+        prefix toolchain-funcs
 
 # only to make repoman happy. it is really set in the eclass
 IUSE="$IUSE"
